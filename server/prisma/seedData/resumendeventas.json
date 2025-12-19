@@ -1,0 +1,302 @@
+[
+  {
+    "resumendeventasId": "9234a776-e6ac-46e2-bc24-c959ce216751",
+    "valorTotal": 4754106.83,
+    "porcentajeCambio": 61.51,
+    "fecha": "2023-03-18T22:32:25Z"
+  },
+  {
+    "resumendeventasId": "e5648831-7d0e-4ef5-8e04-f6e6a0eaafb1",
+    "valorTotal": 1512948.97,
+    "porcentajeCambio": -2.28,
+    "fecha": "2023-09-03T13:50:20Z"
+  },
+  {
+    "resumendeventasId": "785d33be-a1d8-47a6-b1d3-779942196b5c",
+    "valorTotal": 5545737.54,
+    "porcentajeCambio": -55.29,
+    "fecha": "2023-07-28T13:16:27Z"
+  },
+  {
+    "resumendeventasId": "0541d262-46aa-4961-b7c0-ce09143ccf34",
+    "valorTotal": 3260113.92,
+    "porcentajeCambio": -71.7,
+    "fecha": "2023-05-16T08:32:38Z"
+  },
+  {
+    "resumendeventasId": "185bb7e9-a9c0-4691-87d3-ca597a29e4d8",
+    "valorTotal": 849737.25,
+    "porcentajeCambio": 9.16,
+    "fecha": "2023-08-26T05:41:40Z"
+  },
+  {
+    "resumendeventasId": "6a1cb0f7-a4e1-4157-800d-86a59fb5fc16",
+    "valorTotal": 98903.57,
+    "porcentajeCambio": 36.24,
+    "fecha": "2023-09-02T01:49:46Z"
+  },
+  {
+    "resumendeventasId": "7d6d3e60-4687-40e3-9a77-452ea298df02",
+    "valorTotal": 973557.25,
+    "porcentajeCambio": 34.22,
+    "fecha": "2023-03-31T15:20:53Z"
+  },
+  {
+    "resumendeventasId": "7e071f0f-cff2-4699-bc67-3bee1114cb9e",
+    "valorTotal": 9761085.56,
+    "porcentajeCambio": -57.32,
+    "fecha": "2023-06-25T12:21:04Z"
+  },
+  {
+    "resumendeventasId": "6688c13c-758a-44c9-a291-d630d13dfd33",
+    "valorTotal": 9819343.72,
+    "porcentajeCambio": -49.57,
+    "fecha": "2023-06-21T17:57:01Z"
+  },
+  {
+    "resumendeventasId": "bce35149-3c37-4a0d-8963-c9f550b262f3",
+    "valorTotal": 2757578.95,
+    "porcentajeCambio": 73.95,
+    "fecha": "2023-05-13T15:02:46Z"
+  },
+  {
+    "resumendeventasId": "4d86c2df-d759-49df-9ecd-1eaf27a3d590",
+    "valorTotal": 8894817.67,
+    "porcentajeCambio": -25.81,
+    "fecha": "2023-03-31T16:04:25Z"
+  },
+  {
+    "resumendeventasId": "c85efa84-d294-4c2e-a9a5-8774d92af8bf",
+    "valorTotal": 2882180.14,
+    "porcentajeCambio": 57.29,
+    "fecha": "2024-03-13T01:19:11Z"
+  },
+  {
+    "resumendeventasId": "9257a2eb-d1ba-4cde-a0c2-cdf766c8c79c",
+    "valorTotal": 543716.99,
+    "porcentajeCambio": 8.85,
+    "fecha": "2024-02-04T05:14:46Z"
+  },
+  {
+    "resumendeventasId": "2f94d909-0f3a-45fb-8072-5054b6dba2d6",
+    "valorTotal": 1171786.52,
+    "porcentajeCambio": 79.4,
+    "fecha": "2023-04-20T00:12:05Z"
+  },
+  {
+    "resumendeventasId": "9bc6eca5-9f18-4e72-bed0-7a98bb759af3",
+    "valorTotal": 9574424.72,
+    "porcentajeCambio": 10.42,
+    "fecha": "2023-04-04T22:57:17Z"
+  },
+  {
+    "resumendeventasId": "a0979a0f-bbe2-4bd8-9639-e6c1d890c6e1",
+    "valorTotal": 1717855.75,
+    "porcentajeCambio": -76.77,
+    "fecha": "2023-07-24T23:01:04Z"
+  },
+  {
+    "resumendeventasId": "d2ff270c-63d9-4510-9524-91cb95494a9d",
+    "valorTotal": 1328587.6,
+    "porcentajeCambio": 62.35,
+    "fecha": "2023-12-30T03:52:12Z"
+  },
+  {
+    "resumendeventasId": "56693648-d829-4d6a-8ff1-379ed00187c0",
+    "valorTotal": 3363438.49,
+    "porcentajeCambio": -3.73,
+    "fecha": "2023-06-16T12:55:40Z"
+  },
+  {
+    "resumendeventasId": "22c58913-c4ad-44ac-bcf0-6309b6c61f26",
+    "valorTotal": 6253195.27,
+    "porcentajeCambio": -33.39,
+    "fecha": "2023-05-12T13:22:28Z"
+  },
+  {
+    "resumendeventasId": "e14f2cdc-28c8-4041-a5c3-444e32f4df96",
+    "valorTotal": 759235.03,
+    "porcentajeCambio": -70.16,
+    "fecha": "2023-05-04T03:54:06Z"
+  },
+  {
+    "resumendeventasId": "abb07538-994f-40df-9850-b93d758566d6",
+    "valorTotal": 8849902.08,
+    "porcentajeCambio": 49.99,
+    "fecha": "2023-10-23T10:52:58Z"
+  },
+  {
+    "resumendeventasId": "3c1be92e-86a4-4ba9-9cc4-0cd25cdd9b53",
+    "valorTotal": 6985354.53,
+    "porcentajeCambio": -45.28,
+    "fecha": "2023-06-12T08:59:54Z"
+  },
+  {
+    "resumendeventasId": "b6438519-cd43-49e4-a6ea-c1e97b6b9f4f",
+    "valorTotal": 1977818.88,
+    "porcentajeCambio": -1.73,
+    "fecha": "2023-07-30T18:47:25Z"
+  },
+  {
+    "resumendeventasId": "47d22ba7-a75b-4570-a0ee-5936af301dc0",
+    "valorTotal": 3051711.61,
+    "porcentajeCambio": 46.06,
+    "fecha": "2023-06-21T19:26:53Z"
+  },
+  {
+    "resumendeventasId": "75bf9bb7-67bf-4674-8d57-ef96c387bd5f",
+    "valorTotal": 1776483.92,
+    "porcentajeCambio": 5.92,
+    "fecha": "2024-01-04T23:05:09Z"
+  },
+  {
+    "resumendeventasId": "aa076cf0-2af4-42d1-a65a-e21048900cdc",
+    "valorTotal": 8008789.18,
+    "porcentajeCambio": -92.62,
+    "fecha": "2023-07-11T05:46:12Z"
+  },
+  {
+    "resumendeventasId": "0eabb55c-311b-4794-8621-684b8e3c6af3",
+    "valorTotal": 9939857.2,
+    "porcentajeCambio": 43.61,
+    "fecha": "2023-11-03T17:55:50Z"
+  },
+  {
+    "resumendeventasId": "02421d34-eab8-4c74-be90-29ae960217e0",
+    "valorTotal": 7378147.37,
+    "porcentajeCambio": -8.68,
+    "fecha": "2023-06-02T21:55:25Z"
+  },
+  {
+    "resumendeventasId": "dab41155-3b2c-4260-9b92-0fb36239e76a",
+    "valorTotal": 5903962.21,
+    "porcentajeCambio": 54.41,
+    "fecha": "2023-04-15T12:08:49Z"
+  },
+  {
+    "resumendeventasId": "777946fe-c45b-48c4-8009-dd34727a2d6e",
+    "valorTotal": 3995392.55,
+    "porcentajeCambio": -39.88,
+    "fecha": "2023-06-04T10:27:19Z"
+  },
+  {
+    "resumendeventasId": "0218422f-dff4-4b96-a485-ec81dfb52b1d",
+    "valorTotal": 2236665.35,
+    "porcentajeCambio": 62.25,
+    "fecha": "2023-04-26T18:00:10Z"
+  },
+  {
+    "resumendeventasId": "2cdc1dff-3f48-4223-b75d-6d40d5ebd70f",
+    "valorTotal": 4924895.6,
+    "porcentajeCambio": 91.7,
+    "fecha": "2023-10-03T09:22:11Z"
+  },
+  {
+    "resumendeventasId": "2876f4ae-7146-4144-a424-1050d3889af9",
+    "valorTotal": 8020749.83,
+    "porcentajeCambio": -53.71,
+    "fecha": "2023-09-09T18:08:04Z"
+  },
+  {
+    "resumendeventasId": "72d4764c-6438-43e8-9f5e-1e1392c49daa",
+    "valorTotal": 1401814.98,
+    "porcentajeCambio": -62.89,
+    "fecha": "2024-01-23T21:18:15Z"
+  },
+  {
+    "resumendeventasId": "0eb49bc9-7bb1-4593-b63c-623604b4d39e",
+    "valorTotal": 7075340.95,
+    "porcentajeCambio": 51.63,
+    "fecha": "2023-04-12T18:35:19Z"
+  },
+  {
+    "resumendeventasId": "a03badbe-ed85-4f67-8563-e70957d711f5",
+    "valorTotal": 6635158.49,
+    "porcentajeCambio": 1.55,
+    "fecha": "2024-01-08T18:20:24Z"
+  },
+  {
+    "resumendeventasId": "ef37f796-5792-48b5-947b-0861d1bcf1d2",
+    "valorTotal": 5438733.13,
+    "porcentajeCambio": 64.23,
+    "fecha": "2023-06-04T03:34:31Z"
+  },
+  {
+    "resumendeventasId": "38f4698c-f973-4118-a38f-0c772dc55993",
+    "valorTotal": 8733498.2,
+    "porcentajeCambio": -9.14,
+    "fecha": "2023-06-18T12:45:24Z"
+  },
+  {
+    "resumendeventasId": "bb7b3f86-95f6-414a-95c5-d6ad13a50e3b",
+    "valorTotal": 8834598.88,
+    "porcentajeCambio": -74.91,
+    "fecha": "2023-09-18T22:57:29Z"
+  },
+  {
+    "resumendeventasId": "6f673a1d-78e9-4ea8-91e2-d7a32836cd3a",
+    "valorTotal": 1518126.03,
+    "porcentajeCambio": 22.59,
+    "fecha": "2024-02-17T06:29:57Z"
+  },
+  {
+    "resumendeventasId": "ac08ecc4-f5e2-4f65-8f7d-3e9e02771657",
+    "valorTotal": 8916033.73,
+    "porcentajeCambio": -70.49,
+    "fecha": "2023-11-23T06:52:42Z"
+  },
+  {
+    "resumendeventasId": "3245bcab-7939-43ef-8f75-66bb2e092637",
+    "valorTotal": 8457395.47,
+    "porcentajeCambio": 58.85,
+    "fecha": "2023-06-14T06:58:44Z"
+  },
+  {
+    "resumendeventasId": "211ab48b-03e9-4e87-aff8-24723760c650",
+    "valorTotal": 2131348.79,
+    "porcentajeCambio": -46.72,
+    "fecha": "2023-04-07T03:15:00Z"
+  },
+  {
+    "resumendeventasId": "6bff1b90-9e27-493b-aead-d70b388c5058",
+    "valorTotal": 4439655.91,
+    "porcentajeCambio": -10.54,
+    "fecha": "2023-08-08T00:53:14Z"
+  },
+  {
+    "resumendeventasId": "b2cd84fc-8f66-477a-ad53-eb7826b89eae",
+    "valorTotal": 2253721.94,
+    "porcentajeCambio": -26.4,
+    "fecha": "2023-12-04T03:33:12Z"
+  },
+  {
+    "resumendeventasId": "db47a861-5062-49c5-92c1-0a8f13ec70b0",
+    "valorTotal": 3844322.3,
+    "porcentajeCambio": -23.92,
+    "fecha": "2023-07-18T05:39:04Z"
+  },
+  {
+    "resumendeventasId": "47ab518f-ec0e-4793-8d3b-53780452e472",
+    "valorTotal": 3145456.83,
+    "porcentajeCambio": -80.96,
+    "fecha": "2023-05-18T14:04:36Z"
+  },
+  {
+    "resumendeventasId": "2f255c3a-d024-4a49-9e3e-3ff4e529c362",
+    "valorTotal": 5041224.3,
+    "porcentajeCambio": 50.26,
+    "fecha": "2023-08-15T23:43:31Z"
+  },
+  {
+    "resumendeventasId": "1344c490-9f30-4a09-8379-e26dc551599e",
+    "valorTotal": 8409410.21,
+    "porcentajeCambio": 27.52,
+    "fecha": "2024-01-01T14:21:37Z"
+  },
+  {
+    "resumendeventasId": "f9e8bb8b-b267-49d9-b621-7f912b348e81",
+    "valorTotal": 4049054.53,
+    "porcentajeCambio": -9.75,
+    "fecha": "2023-04-08T22:11:59Z"
+  }
+]

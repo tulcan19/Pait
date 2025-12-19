@@ -1,7 +1,15 @@
 // ...existing code...
 "use client";
 
+<<<<<<< Updated upstream
 import { Bell, Menu, Sun, Settings } from "lucide-react";
+=======
+import { useAppDispatch, useAppSelector } from "@/app/redux";
+import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
+import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+>>>>>>> Stashed changes
 import React from "react";
 import Link from "next/link";
 
@@ -47,8 +55,19 @@ const Navbar = () => {
           </div>
           <hr className="w-0 h-7 border-solid border-l border-gray-300 mx-3" />
           <div className="flex items-center gap-3 cursor-pointer">
+<<<<<<< Updated upstream
             <div className="w-9 h-9">imagen</div>
             <span className="font-semibold">Javier Tulcan</span>
+=======
+            <Image
+              src="https://s3-inventorymanagement.s3.us-east-2.amazonaws.com/profile.jpg"
+              alt="Profile"
+              width={50}
+              height={50}
+              className="rounded-full h-full object-cover"
+            />
+            <span className="font-semibold">Javier Tulcán</span>
+>>>>>>> Stashed changes
           </div>
         </div>
 
@@ -61,4 +80,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+<<<<<<< Updated upstream
 // ...existing code...
+=======
+>>>>>>> Stashed changes

@@ -14,16 +14,16 @@ const baseColors = [
 ];
 
 const shadeMapping = {
-    "50": "900",
-    "100": "800",
-    "200": "700",
-    "300": "600",
-    "400": "500",
-    "500": "400",
-    "600": "300",
-    "700": "200",
-    "800": "100",
-    "900": "50",
+  "50": "900",
+  "100": "800",
+  "200": "700",
+  "300": "600",
+  "400": "500",
+  "500": "400",
+  "600": "300",
+  "700": "200",
+  "800": "100",
+  "900": "50",
 };
 
 const generateThemeObject = (colors: any, mapping: any, invert = false) => {
@@ -54,7 +54,7 @@ const themes = {
 };
 
 const config: Config = {
-    darkMode: "class",
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -69,7 +69,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [ createThemes(themes) ],
+  plugins: [createThemes(themes)],
 };
 
 export default config;
