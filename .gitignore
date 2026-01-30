@@ -12,3 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 client/
 server/
+client/
+server/
+node_modules/
+.env
