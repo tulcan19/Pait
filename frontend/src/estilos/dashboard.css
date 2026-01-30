@@ -1,0 +1,126 @@
+.dashboard {
+  min-height: 100vh;
+  background: #0b1220;
+  color: #e5e7eb;
+  padding: 24px;
+}
+
+.dashboard-contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.topbar h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.badge {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.btn-salir {
+  background: rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-salir:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.grid-metricas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 16px 0 22px;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+.card-titulo {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  margin: 0 0 10px;
+}
+
+.card-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.grid-dos {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.tabla thead th {
+  text-align: left;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.tabla tbody td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: #e5e7eb;
+  font-size: 0.92rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.08);
+}
+
+.loading {
+  padding: 16px;
+  color: #cbd5e1;
+}
+
+@media (max-width: 920px) {
+  .grid-metricas {
+    grid-template-columns: 1fr;
+  }
+  .grid-dos {
+    grid-template-columns: 1fr;
+  }
+}
