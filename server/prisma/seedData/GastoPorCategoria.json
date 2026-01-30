@@ -1,0 +1,352 @@
+[
+  {
+    "gastoPorCategoriaId": "0e980d1b-ae93-4a5a-b235-4dfea5f42860",
+    "resumenGastosId": "5229a14b-443b-4551-9d01-4bc0dc820d05",
+    "fecha": "2023-11-23T11:54:21Z",
+    "categoria": "Office",
+    "cantidad": 48
+  },
+  {
+    "gastoPorCategoriaId": "076a4956-60c2-4b73-b275-530359a91cba",
+    "resumenGastosId": "c17ff164-1ab4-41e7-91a8-8aab790dcd88",
+    "fecha": "2023-08-13T09:49:33Z",
+    "categoria": "Salaries",
+    "cantidad": 66
+  },
+  {
+    "gastoPorCategoriaId": "27d49b13-1a3a-4fc7-924c-07147e4d08bd",
+    "resumenGastosId": "45ecf33b-6c3b-4e55-84ec-fa30b88aa03f",
+    "fecha": "2023-07-24T09:26:56Z",
+    "categoria": "Salaries",
+    "cantidad": 63
+  },
+  {
+    "gastoPorCategoriaId": "037fce5f-2c74-4f7a-a863-8cdd4db8a56b",
+    "resumenGastosId": "e495b850-cf2b-4b76-93c2-d4241c859cd0",
+    "fecha": "2023-05-24T05:24:15Z",
+    "categoria": "Salaries",
+    "cantidad": 77
+  },
+  {
+    "gastoPorCategoriaId": "abdb6c33-81ff-45dd-a653-ceae0783729d",
+    "resumenGastosId": "376f8d90-8b66-4cff-bd4e-2fcd14a42845",
+    "fecha": "2023-05-07T12:33:09Z",
+    "categoria": "Office",
+    "cantidad": 67
+  },
+  {
+    "gastoPorCategoriaId": "246326ac-b8b2-44ee-9f14-f54086aa6a00",
+    "resumenGastosId": "744bb795-0f98-45cd-99ae-45dddb99c3e4",
+    "fecha": "2024-01-08T22:08:30Z",
+    "categoria": "Salaries",
+    "cantidad": 12
+  },
+  {
+    "gastoPorCategoriaId": "760beed5-a14b-4e4b-9951-3ebe6f5842a1",
+    "resumenGastosId": "4a6a10e5-4f44-4aef-a1bd-c57075f3c44f",
+    "fecha": "2023-06-11T08:03:25Z",
+    "categoria": "Office",
+    "cantidad": 57
+  },
+  {
+    "gastoPorCategoriaId": "6c653ab9-2b4b-49be-b891-944f5ff98b85",
+    "resumenGastosId": "d62a1123-18b3-4784-bbdd-70a29f773f99",
+    "fecha": "2023-07-10T00:15:57Z",
+    "categoria": "Office",
+    "cantidad": 34
+  },
+  {
+    "gastoPorCategoriaId": "0636f954-6ef8-40b4-819f-fbfe4511be56",
+    "resumenGastosId": "ace2b05e-31de-48bd-a179-e59d16757456",
+    "fecha": "2023-12-16T19:29:15Z",
+    "categoria": "Salaries",
+    "cantidad": 43
+  },
+  {
+    "gastoPorCategoriaId": "86f616b9-3d68-4a04-b8e8-966a11ce1a78",
+    "resumenGastosId": "f24f6dd9-dd18-42f9-a76a-95d8198b7636",
+    "fecha": "2023-07-04T04:49:15Z",
+    "categoria": "Salaries",
+    "cantidad": 62
+  },
+  {
+    "gastoPorCategoriaId": "0381f4e7-08dc-4e10-8d8d-be02a3d1c16b",
+    "resumenGastosId": "2a2a88f0-0148-4667-8bab-7d129586bdf7",
+    "fecha": "2023-10-18T18:41:07Z",
+    "categoria": "Professional",
+    "cantidad": 28
+  },
+  {
+    "gastoPorCategoriaId": "55628026-8104-4d95-91f8-8062df421036",
+    "resumenGastosId": "560c166c-7093-4583-a007-5af2a88f1dab",
+    "fecha": "2024-01-01T03:49:45Z",
+    "categoria": "Office",
+    "cantidad": 65
+  },
+  {
+    "gastoPorCategoriaId": "44e1e4bc-462a-4b41-a1d2-a9997fa38ff8",
+    "resumenGastosId": "6faadd8d-5cdd-4b35-a3e8-cb0ada67de3a",
+    "fecha": "2023-12-23T19:25:39Z",
+    "categoria": "Salaries",
+    "cantidad": 54
+  },
+  {
+    "gastoPorCategoriaId": "ab27a324-088c-4bdc-8ce4-c67a6fbff088",
+    "resumenGastosId": "be4755fd-0f7c-4292-a0ad-539ad1371f6e",
+    "fecha": "2023-03-15T12:50:41Z",
+    "categoria": "Salaries",
+    "cantidad": 97
+  },
+  {
+    "gastoPorCategoriaId": "2e335aef-bb2e-401d-bda9-2c123e3031ad",
+    "resumenGastosId": "46a33080-d239-49b2-9f0a-5d2d576a3966",
+    "fecha": "2023-04-23T21:27:57Z",
+    "categoria": "Professional",
+    "cantidad": 94
+  },
+  {
+    "gastoPorCategoriaId": "5cdabf88-3c50-4519-bcc3-f9eb2abcfdc9",
+    "resumenGastosId": "40dd45c1-b575-48d1-b1a0-2bf474c8b591",
+    "fecha": "2023-05-11T09:55:13Z",
+    "categoria": "Salaries",
+    "cantidad": 24
+  },
+  {
+    "gastoPorCategoriaId": "bf128fb0-7c2f-45af-916e-4210d0b2c737",
+    "resumenGastosId": "4d452c32-21fd-4891-a5fe-aa481861e0ad",
+    "fecha": "2023-06-16T16:48:42Z",
+    "categoria": "Office",
+    "cantidad": 59
+  },
+  {
+    "gastoPorCategoriaId": "70157f83-2d78-43b0-85c0-9c955abdbbcd",
+    "resumenGastosId": "acd41481-9384-4ff1-8004-a3df027a0209",
+    "fecha": "2023-09-30T05:02:44Z",
+    "categoria": "Office",
+    "cantidad": 54
+  },
+  {
+    "gastoPorCategoriaId": "2f0fc0ff-11d6-4fa2-b930-84c1503fc4b6",
+    "resumenGastosId": "9b523e04-fdae-4b0b-a6d9-58ef64c75431",
+    "fecha": "2023-07-03T22:12:16Z",
+    "categoria": "Office",
+    "cantidad": 25
+  },
+  {
+    "gastoPorCategoriaId": "ce4b9e25-25fa-49ed-8711-0ec432e913e3",
+    "resumenGastosId": "4ada8077-3799-4690-ae35-c552e4100b1a",
+    "fecha": "2023-08-23T11:48:59Z",
+    "categoria": "Professional",
+    "cantidad": 54
+  },
+  {
+    "gastoPorCategoriaId": "4bc92339-cf13-4da5-bfc5-d201b4bce01f",
+    "resumenGastosId": "f6041c02-7b2a-4de3-8aed-81b82528ffe4",
+    "fecha": "2023-09-14T06:41:32Z",
+    "categoria": "Professional",
+    "cantidad": 37
+  },
+  {
+    "gastoPorCategoriaId": "0cf47f96-e01f-443e-a864-9dd94aa0916b",
+    "resumenGastosId": "d68b89d4-3332-4e29-8e5a-3c0483af6688",
+    "fecha": "2023-06-11T13:00:11Z",
+    "categoria": "Office",
+    "cantidad": 96
+  },
+  {
+    "gastoPorCategoriaId": "1629525c-9e25-4252-a55a-708eae10d62c",
+    "resumenGastosId": "9ef8296f-f2b3-4733-8664-7ef5e388734b",
+    "fecha": "2024-01-03T17:10:35Z",
+    "categoria": "Office",
+    "cantidad": 85
+  },
+  {
+    "gastoPorCategoriaId": "33579bc1-739f-4489-9a5c-1fdea6e1dec2",
+    "resumenGastosId": "c9a46c10-c426-4cbe-b805-83ab5d963e19",
+    "fecha": "2023-08-20T13:33:02Z",
+    "categoria": "Salaries",
+    "cantidad": 55
+  },
+  {
+    "gastoPorCategoriaId": "baf43dac-2563-4847-b756-a6c02cc17500",
+    "resumenGastosId": "8f70eaa2-fb78-4b32-bf2f-67c1e4988d2f",
+    "fecha": "2023-12-23T06:16:20Z",
+    "categoria": "Salaries",
+    "cantidad": 7
+  },
+  {
+    "gastoPorCategoriaId": "c3784dc2-03aa-48c0-aaa7-54ab2d3fb049",
+    "resumenGastosId": "f222583a-d003-44e1-920d-0f9743a873dc",
+    "fecha": "2023-09-20T10:01:41Z",
+    "categoria": "Professional",
+    "cantidad": 90
+  },
+  {
+    "gastoPorCategoriaId": "6e0372f9-0dba-4152-91f0-1c14f977b7a0",
+    "resumenGastosId": "0675c624-1e11-4df8-821f-9a2d744dba09",
+    "fecha": "2023-09-02T16:42:29Z",
+    "categoria": "Office",
+    "cantidad": 99
+  },
+  {
+    "gastoPorCategoriaId": "c011c90e-ccfb-4dd8-b4b3-1daf483d9cba",
+    "resumenGastosId": "abe1d0e1-65bf-49dc-801d-ba669aae8e33",
+    "fecha": "2023-07-05T08:02:52Z",
+    "categoria": "Salaries",
+    "cantidad": 52
+  },
+  {
+    "gastoPorCategoriaId": "2956f7b0-0526-4175-a596-7a8c22c4a6e1",
+    "resumenGastosId": "6aef1c35-a1c4-4a58-9be0-b6488a622eaa",
+    "fecha": "2023-12-01T05:58:17Z",
+    "categoria": "Professional",
+    "cantidad": 71
+  },
+  {
+    "gastoPorCategoriaId": "2fc8c8c4-e1b3-4bc3-86af-ec2d83ed8511",
+    "resumenGastosId": "43b606a2-45c6-4da4-85aa-f219aa6a2960",
+    "fecha": "2023-08-29T13:03:56Z",
+    "categoria": "Salaries",
+    "cantidad": 4
+  },
+  {
+    "gastoPorCategoriaId": "a4d61feb-528b-4314-8648-eb7c34c2303c",
+    "resumenGastosId": "db5b8de2-7dc0-4efe-a937-34e537a3f8ec",
+    "fecha": "2023-09-24T19:24:50Z",
+    "categoria": "Salaries",
+    "cantidad": 7
+  },
+  {
+    "gastoPorCategoriaId": "b2a808b4-bba5-4091-a6b4-ce0f7b917807",
+    "resumenGastosId": "b0760c67-c326-4f6d-9511-cb2b6896a11f",
+    "fecha": "2023-03-29T09:33:35Z",
+    "categoria": "Office",
+    "cantidad": 48
+  },
+  {
+    "gastoPorCategoriaId": "fcb238ba-dabc-4d93-9c34-aee8e305f866",
+    "resumenGastosId": "8404fc43-72be-4a3a-bf55-313256b0e083",
+    "fecha": "2024-01-08T08:48:51Z",
+    "categoria": "Professional",
+    "cantidad": 15
+  },
+  {
+    "gastoPorCategoriaId": "4cfa1c7f-b18a-41d9-9e79-55854f1269bf",
+    "resumenGastosId": "b149ef3b-f9cc-4560-ab29-4f74ec138c71",
+    "fecha": "2024-03-08T11:57:57Z",
+    "categoria": "Professional",
+    "cantidad": 94
+  },
+  {
+    "gastoPorCategoriaId": "a9f613be-6d9b-4ff0-8f26-37b71ed47274",
+    "resumenGastosId": "7e793e60-2edc-4adf-9d6f-bb6d09c93481",
+    "fecha": "2024-02-15T10:50:32Z",
+    "categoria": "Office",
+    "cantidad": 94
+  },
+  {
+    "gastoPorCategoriaId": "198e6bd4-9586-47fd-903d-aac56f99b61d",
+    "resumenGastosId": "e56345be-2ac9-4ca7-a9a2-1c59846381f7",
+    "fecha": "2023-08-13T13:25:33Z",
+    "categoria": "Salaries",
+    "cantidad": 10
+  },
+  {
+    "gastoPorCategoriaId": "9a86fea1-8b89-4f2f-829f-4406e530934d",
+    "resumenGastosId": "cdfd8bfd-1851-4cd1-ab5f-e66e7260ba92",
+    "fecha": "2024-03-11T08:04:25Z",
+    "categoria": "Office",
+    "cantidad": 18
+  },
+  {
+    "gastoPorCategoriaId": "3ad489e8-ce80-4ace-b5e8-732d226affd2",
+    "resumenGastosId": "eb8f9ea8-2cdb-4461-80fc-9dd571afb200",
+    "fecha": "2023-08-26T01:40:17Z",
+    "categoria": "Salaries",
+    "cantidad": 82
+  },
+  {
+    "gastoPorCategoriaId": "c8122a8a-498f-4504-97ed-e6361169099f",
+    "resumenGastosId": "1fe8f10b-24d0-4906-a66c-96ff7783671b",
+    "fecha": "2024-02-03T20:08:28Z",
+    "categoria": "Salaries",
+    "cantidad": 95
+  },
+  {
+    "gastoPorCategoriaId": "fc7e618a-c26c-42e3-8e38-e87469127c7e",
+    "resumenGastosId": "6cd41a74-4084-4e91-b009-5ab41730d258",
+    "fecha": "2023-10-07T22:01:48Z",
+    "categoria": "Office",
+    "cantidad": 91
+  },
+  {
+    "gastoPorCategoriaId": "a81be162-da70-43f0-a5d5-279f63bb1183",
+    "resumenGastosId": "d953877c-72d8-4189-8078-6ed4e46a23a4",
+    "fecha": "2024-01-27T17:00:00Z",
+    "categoria": "Salaries",
+    "cantidad": 77
+  },
+  {
+    "gastoPorCategoriaId": "dac98685-6d90-41ed-80ba-dded515cc3f0",
+    "resumenGastosId": "e328c686-7e18-41b3-92e2-e2ddaf3a4a31",
+    "fecha": "2023-07-03T02:00:59Z",
+    "categoria": "Professional",
+    "cantidad": 62
+  },
+  {
+    "gastoPorCategoriaId": "1241f3cf-99d8-4b84-b734-d60c3b53caad",
+    "resumenGastosId": "becde53e-60b5-40d1-be9c-27763057f3ac",
+    "fecha": "2023-12-20T22:03:05Z",
+    "categoria": "Salaries",
+    "cantidad": 34
+  },
+  {
+    "gastoPorCategoriaId": "c8f652dd-e8a6-4eb5-bc17-993d58ea1e10",
+    "resumenGastosId": "803d384f-69a9-450d-8ed3-96d202dbafcd",
+    "fecha": "2023-08-05T04:51:45Z",
+    "categoria": "Salaries",
+    "cantidad": 87
+  },
+  {
+    "gastoPorCategoriaId": "381c5e38-daae-473d-b32a-b1414106771a",
+    "resumenGastosId": "4749833f-3eaa-452f-bb28-209988f7918d",
+    "fecha": "2024-01-15T07:35:22Z",
+    "categoria": "Salaries",
+    "cantidad": 12
+  },
+  {
+    "gastoPorCategoriaId": "96e7aac8-5c4e-4a14-9106-a31913e601d0",
+    "resumenGastosId": "852af507-0551-41c8-9d95-a90ed9b1a07c",
+    "fecha": "2023-03-15T14:01:06Z",
+    "categoria": "Salaries",
+    "cantidad": 88
+  },
+  {
+    "gastoPorCategoriaId": "98ef7cce-68d9-4dee-bca0-804955502b83",
+    "resumenGastosId": "45718dc4-41ef-4a92-b270-3f7eb445fbef",
+    "fecha": "2024-01-30T18:16:56Z",
+    "categoria": "Salaries",
+    "cantidad": 100
+  },
+  {
+    "gastoPorCategoriaId": "a8fbd7bf-b3f0-4f75-8b5d-6f0a078bef37",
+    "resumenGastosId": "5763fb5e-a9b1-41a7-b873-0ecfad5c749c",
+    "fecha": "2023-12-20T11:34:30Z",
+    "categoria": "Office",
+    "cantidad": 98
+  },
+  {
+    "gastoPorCategoriaId": "5a34add7-30f1-4878-a0cc-e45556f5bfe9",
+    "resumenGastosId": "87122213-3ad3-418a-8914-5a35e01bb69b",
+    "fecha": "2023-08-18T16:03:36Z",
+    "categoria": "Professional",
+    "cantidad": 78
+  },
+  {
+    "gastoPorCategoriaId": "1dac299c-9b5a-4fb4-8ab5-fcdf6f9f0298",
+    "resumenGastosId": "10ec2f80-6da0-4909-b8fd-7c5cfdb7bef4",
+    "fecha": "2023-08-06T08:45:27Z",
+    "categoria": "Office",
+    "cantidad": 12
+  }
+]
