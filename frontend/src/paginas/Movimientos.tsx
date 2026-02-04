@@ -147,7 +147,7 @@ const Movimientos = ({ volver }: { volver: () => void }) => {
     <div className="card">
       <div className="topbar" style={{ marginBottom: 14 }}>
         <div>
-          <h1 style={{ margin: 0 }}>Movimientos (Kardex)</h1>
+          <h1 style={{ margin: 0 }}>Movimientos </h1>
           <div className="badge">
             <span>🧾</span>
             <span>Entradas / Salidas / Ajustes</span>

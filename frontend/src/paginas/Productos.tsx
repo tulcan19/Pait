@@ -246,7 +246,7 @@ const activar = async (p: Producto) => {
         <div>
           <h1 style={{ margin: 0 }}>Productos</h1>
           <div className="badge">
-            <span>📦</span>
+            {/* <span>📦</span> */}
             <span>Gestión de inventario</span>
             <span className="pill">
               {esSupervisor() ? "Solo lectura" : "Edición habilitada"}

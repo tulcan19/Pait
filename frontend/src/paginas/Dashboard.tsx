@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import api from "../api/api";
 import { cerrarSesion, obtenerToken } from "../api/autenticacion";
 import "../estilos/dashboard.css";
-import { esAdmin, esOperador, esSupervisor } from "../contextos/sesion";
+import "../estilos/movimientos.css";
+import { esAdmin, esOperador, esSupervisor, obtenerUsuario } from "../contextos/sesion";
+import { formatearDinero, generarIniciales } from "../helpers/validaciones";
 
 import Productos from "./Productos";
 import Movimientos from "./Movimientos";
@@ -12,6 +14,7 @@ import Clientes from "./Clientes";
 import Compras from "./Compras";
 import Usuarios from "./Usuarios";
 import Estadisticas from "./Estadisticas";
+import Categorias from "./Categorias";
 
 type Resumen = {
   total_ventas: string;
@@ -49,6 +52,7 @@ type DashboardData = {
 type Pantalla =
   | "dashboard"
   | "productos"
+  | "categorias"
   | "movimientos"
   | "clientes"
   | "ventas"
@@ -58,21 +62,57 @@ type Pantalla =
   | "estadisticas"
   | "denegado";
 
-function formatearDinero(valor: string) {
-  const n = Number(valor);
-  if (Number.isNaN(n)) return valor;
-  return n.toFixed(2); 
-}
+// Definición del menú según permisos
+type MenuItem = {
+  id: Pantalla;
+  nombre: string;
+  icono: string;
+  seccion: string;
+  roles: string[];
+};
+
+const menuItems: MenuItem[] = [
+  { id: "dashboard", nombre: "Dashboard", icono: "📊", seccion: "Principal", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "ventas", nombre: "Ventas", icono: "🧾", seccion: "Operaciones", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "compras", nombre: "Compras", icono: "📦", seccion: "Operaciones", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "clientes", nombre: "Clientes", icono: "👥", seccion: "Operaciones", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "productos", nombre: "Productos", icono: "🏷️", seccion: "Inventario", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "categorias", nombre: "Categorías", icono: "📁", seccion: "Inventario", roles: ["Administrador"] },
+  { id: "movimientos", nombre: "Movimientos", icono: "📋", seccion: "Inventario", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "gastos", nombre: "Gastos", icono: "💸", seccion: "Finanzas", roles: ["Administrador"] },
+  { id: "estadisticas", nombre: "Estadísticas", icono: "📈", seccion: "Reportes", roles: ["Administrador", "Supervisor", "Operador"] },
+  { id: "usuarios", nombre: "Usuarios", icono: "👤", seccion: "Administración", roles: ["Administrador"] },
+];
 
 const Dashboard = ({ onSalir }: { onSalir: () => void }) => {
   const [datos, setDatos] = useState<DashboardData | null>(null);
   const [cargando, setCargando] = useState(true);
   const [pantalla, setPantalla] = useState<Pantalla>("dashboard");
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
-  const usuario = localStorage.getItem("usuario");
-  const usuarioObj = usuario ? JSON.parse(usuario) : null;
+  const usuario = obtenerUsuario();
 
-  const cargarDashboard = async () => {
+  // Obtener el rol actual
+  const obtenerRolActual = (): string => {
+    if (esAdmin()) return "Administrador";
+    if (esSupervisor()) return "Supervisor";
+    if (esOperador()) return "Operador";
+    return "Usuario";
+  };
+
+  const rolActual = obtenerRolActual();
+
+  // Filtrar menú según rol
+  const menuFiltrado = menuItems.filter(item => item.roles.includes(rolActual));
+
+  // Agrupar menú por sección
+  const menuPorSeccion = menuFiltrado.reduce((acc, item) => {
+    if (!acc[item.seccion]) acc[item.seccion] = [];
+    acc[item.seccion].push(item);
+    return acc;
+  }, {} as Record<string, MenuItem[]>);
+
+  const cargarDashboard = useCallback(async () => {
     try {
       setCargando(true);
       const token = obtenerToken();
@@ -92,410 +132,379 @@ const Dashboard = ({ onSalir }: { onSalir: () => void }) => {
     } finally {
       setCargando(false);
     }
-  };
+  }, [onSalir]);
 
   useEffect(() => {
     cargarDashboard();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [cargarDashboard]);
 
   const salir = () => {
     cerrarSesion();
     onSalir();
   };
 
-  // ✅ AHORA ir() ACEPTA "ventas" TAMBIÉN
   const ir = (p: Pantalla) => {
-    const puedeVerGastos = esAdmin();
-    const puedeVerMovimientos = esAdmin() || esOperador() || esSupervisor();
-    const puedeVerProductos = esAdmin() || esOperador() || esSupervisor();
-    const puedeVerClientes = esAdmin() || esOperador() || esSupervisor();
-    const puedeVerVentas = esAdmin() || esOperador() || esSupervisor();
-    const puedeVerCompras = esAdmin() || esOperador() || esSupervisor();
-    const puedeVerUsuarios = esAdmin();
-    const puedeVerEstadisticas = esAdmin() || esOperador() || esSupervisor();
-
-    if (p === "gastos" && !puedeVerGastos) return setPantalla("denegado");
-    if (p === "movimientos" && !puedeVerMovimientos) return setPantalla("denegado");
-    if (p === "productos" && !puedeVerProductos) return setPantalla("denegado");
-    if (p === "clientes" && !puedeVerClientes) return setPantalla("denegado");
-    if (p === "ventas" && !puedeVerVentas) return setPantalla("denegado");
-    if (p === "compras" && !puedeVerCompras) return setPantalla("denegado");
-    if (p === "usuarios" && !puedeVerUsuarios) return setPantalla("denegado");
-    if (p === "estadisticas" && !puedeVerEstadisticas) return setPantalla("denegado");
-
+    // Verificar permisos
+    const item = menuItems.find(m => m.id === p);
+    if (item && !item.roles.includes(rolActual)) {
+      setPantalla("denegado");
+      return;
+    }
+    
     setPantalla(p);
+    setMenuAbierto(false);
   };
 
+  const volverAlDashboard = () => {
+    setPantalla("dashboard");
+    cargarDashboard();
+  };
 
-  const VistaMovimientos = () => (
-    <Movimientos
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
+  // Renderizar componentes según pantalla
+  const renderizarContenido = () => {
+    switch (pantalla) {
+      case "productos":
+        return <Productos volver={volverAlDashboard} />;
+      case "categorias":
+        return <Categorias volver={volverAlDashboard} />;
+      case "movimientos":
+        return <Movimientos volver={volverAlDashboard} />;
+      case "ventas":
+        return <Ventas volver={volverAlDashboard} />;
+      case "clientes":
+        return <Clientes volver={volverAlDashboard} />;
+      case "compras":
+        return <Compras volver={volverAlDashboard} />;
+      case "gastos":
+        return <Gastos volver={volverAlDashboard} />;
+      case "usuarios":
+        return <Usuarios volver={volverAlDashboard} />;
+      case "estadisticas":
+        return <Estadisticas volver={volverAlDashboard} />;
+      case "denegado":
+        return <VistaDenegado />;
+      default:
+        return <VistaDashboard />;
+    }
+  };
 
-  const VistaProductos = () => (
-    <Productos
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-  const VistaGastos = () => (
-    <Gastos
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-  const VistaVentas = () => (
-    <Ventas
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-  const VistaClientes = () => (
-    <Clientes
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-  const VistaCompras = () => (
-    <Compras
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-  const VistaUsuarios = () => (
-    <Usuarios
-      volver={() => {
-        setPantalla("dashboard");
-        cargarDashboard();
-      }}
-    />
-  );
-
-
-
+  // Vista de acceso denegado
   const VistaDenegado = () => (
     <div className="card">
-      <h2 style={{ marginTop: 0 }}>⛔ Acceso denegado</h2>
-      <p>No tienes permisos para acceder a esta sección.</p>
-
-      <button className="btn-salir" onClick={() => setPantalla("dashboard")}>
-        Volver al Dashboard
-      </button>
+      <div style={{ textAlign: "center", padding: "var(--espaciado-xl)" }}>
+        <div style={{ fontSize: "4rem", marginBottom: "var(--espaciado-md)" }}>🚫</div>
+        <h2 style={{ margin: "0 0 var(--espaciado-md)" }}>Acceso Denegado</h2>
+        <p style={{ color: "var(--color-texto-muted)", marginBottom: "var(--espaciado-lg)" }}>
+          No tienes permisos para acceder a esta sección.
+        </p>
+        <button className="btn-primario" onClick={() => setPantalla("dashboard")}>
+          Volver al Dashboard
+        </button>
+      </div>
     </div>
+  );
+
+  // Vista principal del dashboard
+  const VistaDashboard = () => (
+    <>
+      {cargando && (
+        <div className="card">
+          <div className="loading">
+            <div className="loading-spinner"></div>
+            Cargando datos del dashboard...
+          </div>
+        </div>
+      )}
+
+      {!cargando && datos && (
+        <>
+          {/* Métricas principales */}
+          <div 
+            className="grid-metricas"
+            style={{
+              gridTemplateColumns: esAdmin() ? "repeat(3, 1fr)" : "repeat(2, 1fr)",
+            }}
+          >
+            <div className="card">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                <div>
+                  <p className="card-titulo">Total Ventas</p>
+                  <p className="card-valor">$ {formatearDinero(datos.resumen.total_ventas)}</p>
+                </div>
+                {/* <div className="card-icono naranja">🧾</div> */}
+              </div>
+            </div>
+
+            <div className="card">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                <div>
+                  <p className="card-titulo">Total Compras</p>
+                  <p className="card-valor">$ {formatearDinero(datos.resumen.total_compras)}</p>
+                </div>
+                {/* <div className="card-icono azul">📦</div> */}
+              </div>
+            </div>
+
+            {esAdmin() && (
+              <div className="card">
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                  <div>
+                    <p className="card-titulo">Total Gastos</p>
+                    <p className="card-valor">$ {formatearDinero(datos.resumen.total_gastos)}</p>
+                  </div>
+                  {/* <div className="card-icono rojo">💸</div> */}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Grid de contenido */}
+          <div className="grid-dos">
+            {/* Actividad reciente */}
+            <div className="card">
+              <p className="card-titulo">Actividad Reciente</p>
+              <div className="tabla-contenedor">
+                <table className="tabla">
+                  <thead>
+                    <tr>
+                      <th style={{ width: 60 }}>Img</th>
+                      <th>Fecha</th>
+                      <th>Tipo</th>
+                      <th>Producto</th>
+                      <th className="ocultar-movil">Cant.</th>
+                      <th className="ocultar-movil">Usuario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {datos.actividad_reciente.map((m) => (
+                      <tr key={m.id_movimiento}>
+                        <td>
+                          {m.imagen ? (
+                            <img
+                              src={m.imagen}
+                              alt={m.producto}
+                              className="tabla-imagen"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = "none";
+                              }}
+                            />
+                          ) : (
+                            <div className="tabla-imagen-placeholder">📦</div>
+                          )}
+                        </td>
+                        <td>{new Date(m.fecha).toLocaleDateString()}</td>
+                        <td>
+                          <span className={`pill ${m.tipo === 'entrada' ? 'exito' : m.tipo === 'salida' ? 'error' : ''}`}>
+                            {m.tipo}
+                          </span>
+                        </td>
+                        <td className="truncar" style={{ maxWidth: 150 }}>{m.producto}</td>
+                        <td className="ocultar-movil">{m.cantidad}</td>
+                        <td className="ocultar-movil">{m.usuario}</td>
+                      </tr>
+                    ))}
+                    {datos.actividad_reciente.length === 0 && (
+                      <tr>
+                        <td colSpan={6} className="loading">
+                          No hay actividad reciente.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Productos populares y Stock bajo */}
+            <div className="card">
+              <p className="card-titulo">Productos Populares</p>
+              <div className="tabla-contenedor">
+                <table className="tabla">
+                  <thead>
+                    <tr>
+                      <th style={{ width: 60 }}>Img</th>
+                      <th>Producto</th>
+                      <th>Vendidos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {datos.productos_populares.map((p) => (
+                      <tr key={p.id_producto}>
+                        <td>
+                          {p.imagen ? (
+                            <img
+                              src={p.imagen}
+                              alt={p.nombre}
+                              className="tabla-imagen"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).style.display = "none";
+                              }}
+                            />
+                          ) : (
+                            <div className="tabla-imagen-placeholder">📦</div>
+                          )}
+                        </td>
+                        <td className="truncar" style={{ maxWidth: 150 }}>{p.nombre}</td>
+                        <td><span className="pill primario">{p.unidades_vendidas}</span></td>
+                      </tr>
+                    ))}
+                    {datos.productos_populares.length === 0 && (
+                      <tr>
+                        <td colSpan={3} className="loading">
+                          No hay datos de productos populares.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              <div style={{ height: "var(--espaciado-lg)" }} />
+
+              <p className="card-titulo">
+                Stock Bajo
+                {datos.stock_bajo.length > 0 && (
+                  <span className="pill error" style={{ marginLeft: "var(--espaciado-sm)" }}>
+                    {datos.stock_bajo.length}
+                  </span>
+                )}
+              </p>
+
+              {datos.stock_bajo.length === 0 ? (
+                <div className="loading" style={{ color: "var(--color-exito)" }}>
+                  ✓ No hay productos con stock bajo
+                </div>
+              ) : (
+                <div className="tabla-contenedor">
+                  <table className="tabla">
+                    <thead>
+                      <tr>
+                        <th style={{ width: 60 }}>Img</th>
+                        <th>Producto</th>
+                        <th>Stock</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datos.stock_bajo.map((s) => (
+                        <tr key={s.id_producto}>
+                          <td>
+                            {s.imagen ? (
+                              <img
+                                src={s.imagen}
+                                alt={s.nombre}
+                                className="tabla-imagen"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).style.display = "none";
+                                }}
+                              />
+                            ) : (
+                              <div className="tabla-imagen-placeholder">📦</div>
+                            )}
+                          </td>
+                          <td className="truncar" style={{ maxWidth: 150 }}>{s.nombre}</td>
+                          <td><span className="pill error">{s.stock}</span></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 
   return (
     <div className="dashboard">
-      <div className="dashboard-contenedor">
-        {/* TOPBAR */}
-        <div className="topbar">
-          <div>
-            <h1>Dashboard de Inventario</h1>
-            <div className="badge">
-              <span>👤</span>
-              <span>{usuarioObj?.nombre || "Usuario"}</span>
-              <span className="pill">{usuarioObj?.rol || "Rol"}</span>
+      {/* Overlay para cerrar menú en móvil */}
+      <div 
+        className={`sidebar-overlay ${menuAbierto ? "visible" : ""}`}
+        onClick={() => setMenuAbierto(false)}
+      />
+
+      {/* Sidebar */}
+      <aside className={`sidebar ${menuAbierto ? "abierto" : ""}`}>
+        <div className="sidebar-header">
+          <div className="sidebar-logo">🏪</div>
+          <div className="sidebar-titulo">
+            <h1>Sierra Stock</h1>
+            <span>Sistema de Gestión</span>
+          </div>
+          <button 
+            className="sidebar-cerrar"
+            onClick={() => setMenuAbierto(false)}
+          >
+            ✕
+          </button>
+        </div>
+
+        <nav className="sidebar-nav">
+          {Object.entries(menuPorSeccion).map(([seccion, items]) => (
+            <div key={seccion} className="sidebar-seccion">
+              <div className="sidebar-seccion-titulo">{seccion}</div>
+              <ul className="sidebar-menu">
+                {items.map((item) => (
+                  <li key={item.id} className="sidebar-item">
+                    <button
+                      className={`sidebar-link ${pantalla === item.id ? "activo" : ""}`}
+                      onClick={() => ir(item.id)}
+                    >
+                      <span className="sidebar-link-icon">{item.icono}</span>
+                      <span className="sidebar-link-texto">{item.nombre}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+
+        <div className="sidebar-footer">
+          <div className="sidebar-usuario">
+            <div className="sidebar-usuario-avatar">
+              {generarIniciales(usuario?.nombre || "Usuario")}
+            </div>
+            <div className="sidebar-usuario-info">
+              <div className="sidebar-usuario-nombre">{usuario?.nombre || "Usuario"}</div>
+              <div className="sidebar-usuario-rol">{rolActual}</div>
             </div>
           </div>
-
-          <button className="btn-salir" onClick={salir}>
-            Cerrar sesión
-          </button>
         </div>
+      </aside>
 
-        {/* MENU */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
-          <button className="btn-salir" onClick={() => ir("dashboard")}>
-            Dashboard
-          </button>
-
-          <button className="btn-salir" onClick={() => ir("productos")}>
-            Productos
-          </button>
-
-          <button className="btn-salir" onClick={() => ir("movimientos")}>
-            Movimientos
-          </button>
-
-          <button className="btn-salir" onClick={() => ir("clientes")}>
-            Clientes
-          </button>
-
-          <button className="btn-salir" onClick={() => ir("ventas")}>
-            Ventas
-          </button>
-          <button className="btn-salir" onClick={() => ir("compras")}>
-            Compras
-          </button>
-
-          {esAdmin() && (
-            <button className="btn-salir" onClick={() => ir("gastos")}>
-              Gastos
+      {/* Contenido principal */}
+      <main className="main-content">
+        {/* Topbar */}
+        <header className="topbar">
+          <div className="topbar-izquierda">
+            <button 
+              className="topbar-hamburguesa"
+              onClick={() => setMenuAbierto(true)}
+            >
+              ☰
             </button>
-          )}
-          {esAdmin() && (
-            <button className="btn-salir" onClick={() => ir("usuarios")}>
-              Usuarios
+            <div>
+              <h1>{menuItems.find(m => m.id === pantalla)?.nombre || "Dashboard"}</h1>
+              <div className="badge">
+                <span>{menuItems.find(m => m.id === pantalla)?.icono || "📊"}</span>
+                <span className="pill">{rolActual}</span>
+              </div>
+            </div>
+          </div>
+          <div className="topbar-derecha">
+            <button className="btn-salir" onClick={salir}>
+              🚪 Cerrar sesión
             </button>
-          )}
-          <button className="btn-salir" onClick={() => ir("estadisticas")}>
-            Estadísticas
-          </button>
+          </div>
+        </header>
+
+        {/* Contenido */}
+        <div className="dashboard-contenedor">
+          {renderizarContenido()}
         </div>
-
-        {/* (Filtro de periodo eliminado del dashboard principal.
-            El periodo y gráficos viven en la pestaña "Estadísticas".) */}
-
-        {/* CONTENIDO */}
-        {pantalla === "dashboard" && (
-          <>
-            {cargando && <div className="loading">Cargando datos...</div>}
-
-            {!cargando && datos && (
-              <>
-                <div
-                  className="grid-metricas"
-                  style={{
-                    gridTemplateColumns: esAdmin() ? "repeat(3, 1fr)" : "repeat(2, 1fr)",
-                  }}
-                >
-                  <div className="card">
-                    <p className="card-titulo">Total Ventas</p>
-                    <p className="card-valor">$ {formatearDinero(datos.resumen.total_ventas)}</p>
-                  </div>
-
-                  <div className="card">
-                    <p className="card-titulo">Total Compras</p>
-                    <p className="card-valor">$ {formatearDinero(datos.resumen.total_compras)}</p>
-                  </div>
-
-                  {esAdmin() && (
-                    <div className="card">
-                      <p className="card-titulo">Total Gastos</p>
-                      <p className="card-valor">$ {formatearDinero(datos.resumen.total_gastos)}</p>
-                    </div>
-                  )}
-                </div>
-
-                <div className="grid-dos">
-                  <div className="card">
-                    <p className="card-titulo">Actividad reciente</p>
-
-                    <table className="tabla">
-                      <thead>
-                        <tr>
-                          <th style={{ width: 60 }}>Imagen</th>
-                          <th>Fecha</th>
-                          <th>Tipo</th>
-                          <th>Producto</th>
-                          <th>Cant.</th>
-                          <th>Usuario</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {datos.actividad_reciente.map((m) => (
-                          <tr key={m.id_movimiento}>
-                            <td>
-                              {m.imagen ? (
-                                <img
-                                  src={m.imagen}
-                                  alt={m.producto}
-                                  style={{
-                                    width: 40,
-                                    height: 40,
-                                    objectFit: "cover",
-                                    borderRadius: 4,
-                                    border: "1px solid #334155",
-                                  }}
-                                  onError={(e) => {
-                                    (e.target as HTMLImageElement).style.display = "none";
-                                  }}
-                                />
-                              ) : (
-                                <div
-                                  style={{
-                                    width: 40,
-                                    height: 40,
-                                    backgroundColor: "#1e293b",
-                                    borderRadius: 4,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    color: "#64748b",
-                                    fontSize: 18,
-                                  }}
-                                >
-                                  📦
-                                </div>
-                              )}
-                            </td>
-                            <td>{new Date(m.fecha).toLocaleString()}</td>
-                            <td>
-                              <span className="pill">{m.tipo}</span>
-                            </td>
-                            <td>{m.producto}</td>
-                            <td>{m.cantidad}</td>
-                            <td>{m.usuario}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div className="card">
-                    <p className="card-titulo">Productos populares</p>
-
-                    <table className="tabla">
-                      <thead>
-                        <tr>
-                          <th style={{ width: 60 }}>Imagen</th>
-                          <th>Producto</th>
-                          <th>Unidades</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {datos.productos_populares.map((p) => (
-                          <tr key={p.id_producto}>
-                            <td>
-                              {p.imagen ? (
-                                <img
-                                  src={p.imagen}
-                                  alt={p.nombre}
-                                  style={{
-                                    width: 50,
-                                    height: 50,
-                                    objectFit: "cover",
-                                    borderRadius: 4,
-                                    border: "1px solid #334155",
-                                  }}
-                                  onError={(e) => {
-                                    (e.target as HTMLImageElement).style.display = "none";
-                                  }}
-                                />
-                              ) : (
-                                <div
-                                  style={{
-                                    width: 50,
-                                    height: 50,
-                                    backgroundColor: "#1e293b",
-                                    borderRadius: 4,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    color: "#64748b",
-                                    fontSize: 20,
-                                  }}
-                                >
-                                  📦
-                                </div>
-                              )}
-                            </td>
-                            <td>{p.nombre}</td>
-                            <td>{p.unidades_vendidas}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-
-                    <div style={{ height: 14 }} />
-
-                    <p className="card-titulo">Stock bajo</p>
-
-                    {datos.stock_bajo.length === 0 ? (
-                      <div className="loading">✅ No hay productos con stock bajo.</div>
-                    ) : (
-                      <table className="tabla">
-                        <thead>
-                          <tr>
-                            <th style={{ width: 60 }}>Imagen</th>
-                            <th>Producto</th>
-                            <th>Stock</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {datos.stock_bajo.map((s) => (
-                            <tr key={s.id_producto}>
-                              <td>
-                                {s.imagen ? (
-                                  <img
-                                    src={s.imagen}
-                                    alt={s.nombre}
-                                    style={{
-                                      width: 50,
-                                      height: 50,
-                                      objectFit: "cover",
-                                      borderRadius: 4,
-                                      border: "1px solid #334155",
-                                    }}
-                                    onError={(e) => {
-                                      (e.target as HTMLImageElement).style.display = "none";
-                                    }}
-                                  />
-                                ) : (
-                                  <div
-                                    style={{
-                                      width: 50,
-                                      height: 50,
-                                      backgroundColor: "#1e293b",
-                                      borderRadius: 4,
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "center",
-                                      color: "#64748b",
-                                      fontSize: 20,
-                                    }}
-                                  >
-                                    📦
-                                  </div>
-                                )}
-                              </td>
-                              <td>{s.nombre}</td>
-                              <td>{s.stock}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    )}
-                  </div>
-                </div>
-              </>
-            )}
-          </>
-        )}
-
-        {pantalla === "productos" && <VistaProductos />}
-        {pantalla === "movimientos" && <VistaMovimientos />}
-        {pantalla === "ventas" && <VistaVentas />}
-        {pantalla === "gastos" && <VistaGastos />}
-        {pantalla === "usuarios" && <VistaUsuarios />}
-        {pantalla === "estadisticas" && <Estadisticas volver={() => setPantalla("dashboard")} />}
-        {pantalla === "denegado" && <VistaDenegado />}
-        {pantalla === "clientes" && <VistaClientes />}
-        {pantalla === "compras" && <VistaCompras />}
-
-
-
-      </div>
+      </main>
     </div>
   );
 };

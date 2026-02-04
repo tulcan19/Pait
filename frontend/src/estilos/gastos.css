@@ -1,126 +1,109 @@
-.dashboard {
-  min-height: 100vh;
-  background: #0b1220;
-  color: #e5e7eb;
-  padding: 24px;
-}
+/* ============================================
+   GASTOS - SIERRA STOCK
+   Estilos específicos para el módulo de gastos
+   (Los estilos base están en dashboard.css y movimientos.css)
+   ============================================ */
 
-.dashboard-contenedor {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
-.topbar h1 {
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-.badge {
+/* Categorías de gastos con colores */
+.gasto-categoria {
   display: inline-flex;
-  gap: 8px;
   align-items: center;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 0.9rem;
+  gap: var(--espaciado-xs);
+  padding: var(--espaciado-xs) var(--espaciado-sm);
+  border-radius: var(--radio-full);
+  font-size: var(--texto-xs);
+  font-weight: 500;
 }
 
-.btn-salir {
-  background: rgba(255,255,255,0.08);
-  color: #e5e7eb;
-  border: 1px solid rgba(255,255,255,0.14);
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
+.gasto-categoria.transporte {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
 }
 
-.btn-salir:hover {
-  background: rgba(255,255,255,0.12);
+.gasto-categoria.servicios {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
 }
 
-.grid-metricas {
+.gasto-categoria.mantenimiento {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--color-primario);
+}
+
+.gasto-categoria.suministros {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.gasto-categoria.otros {
+  background: var(--color-fondo-hover);
+  color: var(--color-texto-muted);
+}
+
+/* Resumen de gastos */
+.gastos-resumen {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin: 16px 0 22px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--espaciado-md);
+  margin-bottom: var(--espaciado-lg);
 }
 
-.card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+.gasto-resumen-item {
+  background: var(--color-fondo-card);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espaciado-md);
+  text-align: center;
 }
 
-.card-titulo {
-  font-size: 0.9rem;
-  color: #cbd5e1;
-  margin: 0 0 10px;
-}
-
-.card-valor {
-  font-size: 1.8rem;
+.gasto-resumen-valor {
+  font-size: var(--texto-2xl);
   font-weight: 700;
-  margin: 0;
-  color: #ffffff;
+  color: var(--color-primario);
 }
 
-.grid-dos {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 14px;
+.gasto-resumen-etiqueta {
+  font-size: var(--texto-sm);
+  color: var(--color-texto-muted);
+  margin-top: var(--espaciado-xs);
 }
 
-.tabla {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 12px;
+/* Timeline de gastos */
+.gastos-timeline {
+  position: relative;
+  padding-left: var(--espaciado-lg);
 }
 
-.tabla thead th {
-  text-align: left;
-  font-size: 0.85rem;
-  color: #cbd5e1;
-  padding: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+.gastos-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-borde);
 }
 
-.tabla tbody td {
-  padding: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: #e5e7eb;
-  font-size: 0.92rem;
+.gasto-timeline-item {
+  position: relative;
+  padding-bottom: var(--espaciado-md);
 }
 
-.pill {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.08);
+.gasto-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--espaciado-lg) + 4px);
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primario);
+  border: 2px solid var(--color-fondo);
 }
 
-.loading {
-  padding: 16px;
-  color: #cbd5e1;
-}
-
-@media (max-width: 920px) {
-  .grid-metricas {
-    grid-template-columns: 1fr;
-  }
-  .grid-dos {
+/* Responsive */
+@media (max-width: 480px) {
+  .gastos-resumen {
     grid-template-columns: 1fr;
   }
 }
